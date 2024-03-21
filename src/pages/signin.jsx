@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { usersAction, usersPostAction } from "../redux/slice/users";
 import { useEffect } from "react";
-import Socailf from "../components/Socailf";
-import SocialG from "../components/Socialgoogle";
+// import Socailf from "../components/Socailf";
+// import SocialG from "../components/Socialgoogle";
 
 const Signin = () => {
   let Users = useSelector((state) => state.users.users);
@@ -190,9 +190,11 @@ const Signin = () => {
                   >
                     Sign up
                   </button>
+                  {/* <div className="text-center">
 
+                  </div> */}
                   {/* Register buttons */}
-                  <div className="text-center">
+                  {/* <div className="text-center">
                     <p>or sign up with:</p>
                     <div>
                       <button
@@ -204,7 +206,7 @@ const Signin = () => {
 
                       {/* <Google /> */}
 
-                      <button
+                      {/* <button
                         type="button"
                         className="  btn btn-link btn-floating mx-1 "
                         style={{ height: "3.5rem" }}
@@ -212,7 +214,7 @@ const Signin = () => {
                         <SocialG />
                       </button>
                     </div>
-                  </div>
+                  </div> */} 
                 </form>
               </div>
             </div>
