@@ -179,14 +179,16 @@ export default function Navbar() {
                   </Link>
                 </button>
               )}
+             
+              {!logedInUser&&(
               <button className="btn btn-success shadow-sm px-4">
                 <Link className="nav-link" to="/signin">
                 {t('Sign up')}
                 </Link>
-              </button>
+              </button>)}
             </div>
           </div>
-
+{logedInUser&&(
           <Link to='/cart' style={{ color: 'black', position: 'relative' }}>
             <div>
             <i
@@ -217,7 +219,8 @@ export default function Navbar() {
               {logedInUser?.purchased.length||0}
             </div>
             </div>
-          </Link>
+          </Link>)}
+          {logedInUser&&(
           <Link to={"/fav"} style={{ color: "black", position: "relative" }}>
             <i
               className="bi bi-bookmark-fill p-2 mx-2  "
@@ -246,7 +249,7 @@ export default function Navbar() {
             >
               {logedInUser?.favourite?.length || 0}
             </div>
-          </Link>
+          </Link>)}
         </div>
       </nav>
     </div>
