@@ -13,7 +13,7 @@ const CountryList = () => {
 
   useEffect(() => {
     setCurrCountry(country);
-    console.log(currCountry);
+    // console.log(currCountry);
   }, [country]);
 
   return (

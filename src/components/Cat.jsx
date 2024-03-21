@@ -15,22 +15,23 @@ export default function Cat() {
     }
   );
 
-  const getAllData = async () => {
-    let newData = [];
 
-    if (localStorage[category]) {
-      const parsedData = JSON.parse(localStorage.getItem(category));
-
-      newData = [...newData, ...parsedData];
-    }
-
-    setData(newData);
-
-    console.log(newData);
-  };
 
   useEffect(() => {
     console.log(category);
+    const getAllData = async () => {
+      let newData = [];
+  
+      if (localStorage[category]) {
+        const parsedData = JSON.parse(localStorage.getItem(category));
+  
+        newData = [...newData, ...parsedData];
+      }
+  
+      setData(newData);
+  
+      console.log(newData);
+    };
     getAllData();
   }, [category]);
 

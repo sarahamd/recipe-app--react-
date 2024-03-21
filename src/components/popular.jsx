@@ -15,7 +15,7 @@ const Popular = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const API_RANDOM_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
-  const [t, i18n] = useTranslation();
+  const [t] = useTranslation();
 
   async function getPopular() {
     const check = localStorage.getItem('popular');

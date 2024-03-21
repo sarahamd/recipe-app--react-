@@ -8,7 +8,6 @@ const CategoryList = ({ categoriesArr }) => {
 
   useEffect(() => {
     setCurrCategory(category);
-    console.log(categoriesArr);
   }, [category]);
 
   return (

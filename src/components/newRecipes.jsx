@@ -20,7 +20,6 @@ const NewRecipes = () => {
   }, []);
 
   const handleUpdate = (id) => {
-    // Redirect to AddRecipe page with recipe ID for updating
     history(`/addrecipe/${id}`);
   };
 
