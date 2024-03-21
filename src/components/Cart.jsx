@@ -1,5 +1,4 @@
 
-
 import React, {  useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -27,7 +26,7 @@ const Cart = () => {
   const handleRemoveItem = async (element) => {
   
       let remaindRecipe = logedInUser.purchased.filter((item) => item.idMeal !== element.idMeal);
-      const response = await axios.patch(`http://localhost:3001/Users/${logedInUser.id}`, { purchased: [...remaindRecipe] });
+      const response = await axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`, { purchased: [...remaindRecipe] });
   
       console.log('Success');
       const updatedUser = response.data;

@@ -2,12 +2,12 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const usersAction = createAsyncThunk("users/getAll", async () => {
-  const res = await axios.get("http://localhost:3001/Users/");
+  const res = await axios.get("https://recipe-fake-api-r9ar.onrender.com/Users/");
   return res.data;
 });
 export const usersPostAction = createAsyncThunk("users/post", async (user) => {
   axios
-    .post("http://localhost:3001/Users/", user)
+    .post("https://recipe-fake-api-r9ar.onrender.com/Users/", user)
     .then(() => {})
     .catch((error) => {
       console.log("Error adding user: ", error);

@@ -8,7 +8,7 @@ const NewRecipes = () => {
 
   async function getData() {
     try {
-      const { data } = await axios.get("http://localhost:3001/Admin");
+      const { data } = await axios.get("https://recipe-fake-api-r9ar.onrender.com/Admin");
       setData(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -25,7 +25,7 @@ const NewRecipes = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3001/Admin/${id}`);
+      await axios.delete(`https://recipe-fake-api-r9ar.onrender.com/Admin/${id}`);
       // Remove the deleted recipe from the state
       setData((prevData) => prevData.filter((recipe) => recipe.id !== id));
       console.log("Recipe deleted successfully");

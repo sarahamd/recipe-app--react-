@@ -18,7 +18,7 @@ const RecentJunior = ({ meal }) => {
   }, [logedInUser]);
 
   const handleUpdate = (updatedUser) => {
-    axios.put(`http://localhost:3001/Users/${logedInUser.id}`, updatedUser)
+    axios.put(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`, updatedUser)
       .then((res) => {
         const updatedUser = res.data;
         dispatch(setLogedInUser(updatedUser));

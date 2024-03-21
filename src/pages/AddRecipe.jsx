@@ -39,7 +39,7 @@ const AddRecipe = () => {
   });
 
   async function getDataById() {
-    const { data } = await axios.get(`http://localhost:3001/Admin/${id}`);
+    const { data } = await axios.get(`https://recipe-fake-api-r9ar.onrender.com/Admin/${id}`);
 
     setRecipe({...data, RecipeImage: ""})
     // console.log(data);
@@ -91,7 +91,7 @@ const AddRecipe = () => {
   };
 
   async function postData() {
-    await axios.post("http://localhost:3001/Admin", recipe);
+    await axios.post("https://recipe-fake-api-r9ar.onrender.com/Admin", recipe);
   }
 
   function handleAlert() {

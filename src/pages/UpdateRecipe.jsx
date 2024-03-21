@@ -7,7 +7,7 @@
 //     const [updatedata, setUpdateData] = useState([]); 
 
 //     async function getDataById() {
-//         const { data } = await axios.get(`http://localhost:3001/Admin/${id}`);
+//         const { data } = await axios.get(`https://recipe-fake-api-r9ar.onrender.com/Admin/${id}`);
 //         setUpdateData(data)
 //         // console.log(data);
 //     }

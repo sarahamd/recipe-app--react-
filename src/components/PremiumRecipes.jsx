@@ -12,7 +12,7 @@ const PremiumRecipes = () => {
     // let[purchasedRecipes,setpurchasedRecipes]=useState(logedInUser.purchased);  //array to store the recipe data fetched from server.
 
    useEffect(()=>{
-    axios.get("http://localhost:3001/recipes")
+    axios.get("https://recipe-fake-api-r9ar.onrender.com/recipes")
     .then(Response=>setPremiumRecipes(Response.data))
    },[])
 
@@ -40,13 +40,13 @@ const dispatch = useDispatch();
   //   console.log(purchased)
   //   if(index !==-1) alert('This recipe is already in your cart')
   //   else{
-  // axios.patch(`http://localhost:3001/Users/${logedInUser.id}`,{"purchased":[...purchasedRecipes, e]})
+  // axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`,{"purchased":[...purchasedRecipes, e]})
   // .then((res)=>{
   //   console.log("success")
   //   setpurchasedRecipes((prevpurchasedRecipes)=>[...prevpurchasedRecipes,e])
   //           console.log(purchasedRecipes.length)})
 
-  //           axios.get(`http://localhost:3001/Users/${logedInUser.id}`)
+  //           axios.get(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`)
   //           .then((res)=>{
   //                       console.log(res.data)
   //                     // setupdateLogInUser(res.data)
@@ -76,8 +76,8 @@ const dispatch = useDispatch();
   // // let index=logedInUser.purchased.findIndex((m)=>m.idMeal === e.idMeal)
   // // if(index !==-1) alert('This recipe is already in your cart')
   // // else{
-  // //   axios.patch(`http://localhost:3001/Users/${logedInUser.id}`,{"purchased":[...purchasedRecipes, e]})
-  // //   // axios.patch(`http://localhost:3001/Users/${logedInUser.id}`, {purchased: purchasedRecipes})
+  // //   axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`,{"purchased":[...purchasedRecipes, e]})
+  // //   // axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`, {purchased: purchasedRecipes})
   // //         .then(Response => { 
   // //   //         // setpurchasedRecipes([...purchasedRecipes,e])
   // //   //         // console.log('Response.data', Response.data)
@@ -103,7 +103,7 @@ const dispatch = useDispatch();
       alert('This recipe is already in your cart');
     } else {
       // Recipe is not in favorites, add it
-      axios.patch(`http://localhost:3001/Users/${logedInUser.id}`, {
+      axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`, {
         purchased: [...logedInUser.purchased, e]
       })
       .then((res) => {
