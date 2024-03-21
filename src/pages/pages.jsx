@@ -12,13 +12,13 @@ import Country from "./country";
 import store from "../redux/store";
 import { Provider } from "react-redux";
 import AddRecipe from "./AddRecipe";
-import Login from "./Login";
 import Details from "./Details";
 import Blog from "./blog";
 import Cat from "../components/Cat";
 import CartPage from "./CartPage";
 import Premiumpage from "./premiumpage";
 import FavPage from "./favPage";
+import Login from "./Login";
 
 const Pages = () => {
 
