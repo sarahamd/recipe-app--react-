@@ -94,7 +94,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr />
+        {/* <hr />
         <div className="row">
           <div className="col-sm-12 col-md-4">
             <p className="text-muted">
@@ -139,7 +139,7 @@ const Footer = () => {
               <i className="bi bi-pinterest"></i>
             </Link>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
