@@ -57,7 +57,8 @@ const Home = () => {
                 {/* <Recent /> */}
                 <RecentJ />
             </div>
-            <NewRecipes />
+            {logedInUser?.isAdmin&&
+            <NewRecipes />}
             {/* <Blogs /> */}
             <Footer />
         </>
