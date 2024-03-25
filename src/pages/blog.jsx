@@ -9,8 +9,9 @@ const Blog = () => {
         <>
             <Navbar />
             <div style={{ width: "100%" }}>
+            <Blog_cards />
                 <Cardstest />
-                <Blog_cards />
+               
             </div>
             <Footer />
         </>

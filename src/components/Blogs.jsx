@@ -4,11 +4,13 @@ const Blogs = () => {
   return (
     <>
     <br></br>
+
     <h1 className="demo" style={{ fontWeight: '700', fontSize: "3rem" }}>Blog</h1>
     <br></br>
     <div className="blogs-container" style={{ height: 'auto' }}>
       
       <div className="blog">
+
         <img src="/images/Health-Benefits-Of-Fasting-In-Ramadan-01-800x800-1.jpg" alt="Blog 1" className="blog-image" />
         <h2>Benefits of Fasting</h2>
         <p>May support weight loss. Studies show that controlling the times we eat – or undertaking short-term fasts – may aid weight reduction, fat loss </p>
@@ -29,6 +31,7 @@ const Blogs = () => {
         <p>Hypertension (high blood pressure) is when the pressure in your blood vessels is too high (140/90 mmHg or higher). It is common but can be serious if not treated. </p>
       </div>
     </div>
+    
     </>
   );
 };

@@ -6,7 +6,7 @@ function Cardstest() {
   return (
     <>
    <div style={{ backgroundColor: 'lightgreen', textAlign: 'center', padding: '40px' }}>
-    <h1 style={{ fontWeight: 'bold', fontSize: '10em' }}>Latest News</h1>
+    {/* <h1 style={{ fontWeight: 'bold', fontSize: '6em' }}>Latest News</h1> */}
 
     <br />
 </div>
@@ -86,7 +86,6 @@ Kayak Coffee is proud to source organic, single-origin, and fair-trade coffee be
         </ModalContent>
       </Modal>
       <br></br>
-    <h1 className="demo">Blogs</h1>
     <br></br>
     </>
   );
