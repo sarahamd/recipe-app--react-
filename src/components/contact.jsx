@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
 import "../Styles/ContactUs.module.css";
+import Navbar from "./Navbar";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -48,6 +49,7 @@ const Contact = () => {
   };
 
   return (
+    <><Navbar></Navbar>
     <div id="contactUs" className="container-fluid mt-5">
       <div className="row">
         <div className="col-md-6 offset-md-3">
@@ -62,8 +64,7 @@ const Contact = () => {
                 name="name"
                 placeholder="Enter your name"
                 value={name}
-                onChange={handleNameChange}
-              />
+                onChange={handleNameChange} />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email address :</label>
@@ -74,8 +75,7 @@ const Contact = () => {
                 name="email"
                 placeholder="Enter email"
                 value={email}
-                onChange={handleEmailChange}
-              />
+                onChange={handleEmailChange} />
             </div>
 
             <div className="form-group">
@@ -87,8 +87,7 @@ const Contact = () => {
                 name="subject"
                 placeholder="Enter subject"
                 value={subject}
-                onChange={handleSubjectChange}
-              />
+                onChange={handleSubjectChange} />
             </div>
 
             <div className="form-group">
@@ -110,7 +109,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-    </div>
+    </div></>
   );
 };
 
