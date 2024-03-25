@@ -94,24 +94,27 @@ const dispatch = useDispatch();
   const handleAddToCard = (e) => {
     console.log(logedInUser);
     console.log(e);
+    
+    if (!logedInUser) {
+      // User is not logged in, show alert
+      alert('Please login first');
+      return;
+    }
   
-    // Check if the recipe is already in the user's favorites
+    // Check if the recipe is already in the user's cart
     const index = logedInUser.purchased.findIndex((m) => m.idMeal === e.idMeal);
   
     if (index !== -1) {
-      // Recipe is already in favorites, show an alert
+      // Recipe is already in cart, show an alert
       alert('This recipe is already in your cart');
     } else {
-      // Recipe is not in favorites, add it
+      // Recipe is not in cart, add it
       axios.patch(`https://recipe-fake-api-r9ar.onrender.com/Users/${logedInUser.id}`, {
         purchased: [...logedInUser.purchased, e]
       })
       .then((res) => {
         console.log('Success');
         const updatedUser = res.data;
-        // setupdateLogInUser(updatedUser);
-        // console.log('Updated user data:', updatedUser);
-        
         // Update the Redux state
         dispatch(setLogedInUser(updatedUser));
         console.log('Dispatch updated success');
@@ -120,13 +123,9 @@ const dispatch = useDispatch();
       .catch((error) => {
         console.error('Error updating user data:', error);
       });
-      // let counterr= logedInUser.purchased.length
-      // dispatch(setcounter(counterr))
-
-//       // Dispatch setcounter with purchased array
-// dispatch(setcounter({ purchased: logedInUser.purchased }));
     }
   }
+  
   
 
    return (
