@@ -30,7 +30,7 @@ export default function Cat() {
   
       setData(newData);
   
-      console.log(newData);
+      console.log("newData cat 33",newData);
     };
     getAllData();
   }, [category]);

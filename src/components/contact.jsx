@@ -29,10 +29,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_q4wqgaa",
-        "template_yovkzln",
+        "service_nu20ccm",
+        "template_mzt84qn",
         e.target,
-        "SG1rXVywNAqmxp6X6"
+        "gWN3mk2YO5RbarlrG"
       )
       .then((result) => {
         console.log(result.text);
@@ -49,67 +49,72 @@ const Contact = () => {
   };
 
   return (
-    <><Navbar></Navbar>
-    <div id="contactUs" className="container-fluid mt-5">
-      <div className="row">
-        <div className="col-md-6 offset-md-3">
-          <h2 className="text-center">Contact Us</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">User Name :</label>
-              <input
-                type="text"
-                className="form-control"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={handleNameChange} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email address :</label>
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                name="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={handleEmailChange} />
-            </div>
+    <>
+      <Navbar></Navbar>
+      <div id="contactUs" className="container-fluid mt-5">
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <h2 className="text-center">Contact Us</h2>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">User Name :</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={handleNameChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email address :</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="subject">Subject :</label>
-              <input
-                type="text"
-                className="form-control"
-                id="subject"
-                name="subject"
-                placeholder="Enter subject"
-                value={subject}
-                onChange={handleSubjectChange} />
-            </div>
+              <div className="form-group">
+                <label htmlFor="subject">Subject :</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="subject"
+                  name="subject"
+                  placeholder="Enter subject"
+                  value={subject}
+                  onChange={handleSubjectChange}
+                />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="message">Message :</label>
-              <textarea
-                className="form-control"
-                id="message"
-                name="message"
-                rows="4"
-                placeholder="Enter your message"
-                value={message}
-                onChange={handleMessageChange}
-              ></textarea>
-            </div>
+              <div className="form-group">
+                <label htmlFor="message">Message :</label>
+                <textarea
+                  className="form-control"
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Enter your message"
+                  value={message}
+                  onChange={handleMessageChange}
+                ></textarea>
+              </div>
 
-            <button type="submit" className="btn btn-success my-3 mb-5">
-              Submit
-            </button>
-          </form>
+              <button type="submit" className="btn btn-success my-3 mb-5">
+                Submit
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div></>
+    </>
   );
 };
 

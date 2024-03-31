@@ -3,10 +3,12 @@ import { useSelector } from "react-redux";
 import YouTube from "react-youtube";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import axios from "axios";
 // import { getrecpie } from "../redux/slice/Getdetails";
 
 const Details = () => {
   const state = useSelector((st) => st.getrecpie.getrecpie);
+  console.log("state",state.idMeal) /// correct   {}
   const [recipe, setRecipe] = useState([]);
 
   // Function to toggle full text display
@@ -25,21 +27,16 @@ const Details = () => {
     }));
   };
 
-  // Effect to store state in local storage
   useEffect(() => {
-    if(typeof state[0] === "object") {
-      localStorage.setItem("recipeState", JSON.stringify(state));
-    }
+ const response=axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state.idMeal}`).then((response)=>{
+  setRecipe(response.data.meals)
+ }).catch((err)=>{
+console.log(err)
+ })
+
   }, [state]);
 
-  // Effect to retrieve state from local storage
-  useEffect(() => {
-    const storedState = JSON.parse(localStorage.getItem("recipeState"));
-    if (storedState) {
-      setRecipe(storedState);
-    }
-  }, []);
-
+  
   console.log("Details page rendered");
   console.log(recipe);
 
@@ -62,12 +59,11 @@ const Details = () => {
                     style={{ color: "#198754", fontSize: "25px" }}
                   ></i>
                 </div>
-                <hr></hr>
+                {/* <hr></hr> */}
               </div>
             </div>
 
             <div className="row mt-2">
-              {/* <h1>{u.strMeal}</h1> */}
               <div className="col-lg-7 col-md-6 col-sm-12 ">
                 <img
                   src={u.strMealThumb}
@@ -77,8 +73,9 @@ const Details = () => {
                 
                 <div className="mt-3" style={{ background: "#efefef", width: "75%" }}>
         <p className="m-2 p-4 fs-3" style={{ display: "inline-block" }}>
-          <h2 className="text-success fs-2 fw-bold"> <i class="fa-solid fa-kitchen-set px-3" ></i>Instructions:</h2>
-          <hr />
+          <h2 className="text-success fs-2 fw-bold"> <i className="fa-solid fa-kitchen-set px-3" ></i>
+          Instructions:</h2>
+          {/* <hr /> */}
           {showFullText ? (
             <span>
               {u.strInstructions}
@@ -93,7 +90,7 @@ const Details = () => {
             </span>
           ) : (
             <span>
-              {u.strInstructions.substring(0, 200)}
+              {u.strInstructions?.substring(0, 200)}
               <button
                 className="btn btn-success"
                 onClick={toggleFullText}
@@ -114,7 +111,7 @@ const Details = () => {
       
 
 Ingredients:</h2>
-    <hr></hr>
+    {/* <hr></hr> */}
     <ul className="m-0 p-0 ">
       {Object.keys(u).map((key, i) => {
         if (key.includes("strIngredient") && u[key]) {
@@ -160,7 +157,7 @@ Ingredients:</h2>
     </ul>
   </div>
   <div className="d-flex" style={{ marginBlock: "5rem", maxWidth: "30%" }}>
-        <YouTube videoId={u.strYoutube.split("=")[1]} />
+        <YouTube videoId={u.strYoutube?.split("=")[1]} />
       </div>
     
 </div>

@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { usersAction } from "../redux/slice/users";
 import { setLogedInUser } from "../redux/slice/logedInUser";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const Users = useSelector((state) => state.users.users);
-  // const loggedInUser = useSelector((state) => state.logedInUser.logedInUser);
+  let [submitError, setSubmitError] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,12 +28,17 @@ const Login = () => {
       ...prevData,
       [name]: value,
     }));
+    setSubmitError(false);
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleclick = (event) => {
     event.preventDefault();
     if (!user.email || !user.password) {
-      console.log("Please fill in all fields.");
+      setSubmitError("Please fill in all fields.");
       return;
     }
 
@@ -44,43 +48,40 @@ const Login = () => {
       dispatch(setLogedInUser(existingUser));
       navigate("/home");
     } else {
-      console.log("Invalid Email or Password ");
+      setSubmitError("Invalid Email or Password");
     }
   };
 
   return (
     <section className="text-center text-lg-start">
-      <style>
-        {`
-      .cascading-right {
-        margin-right: -50px;
-      }
-
-      @media (max-width: 991.98px) {
-        .cascading-right {
-          margin-right: 0;
-        }
-      }
-      .btngreen{
-        color:#198754
-      }
-      `}
-      </style>
-
       <div className="container py-4">
         <div className="row g-0 align-items-center">
           <div className="col-lg-6 mb-5 mb-lg-0">
-            <div
-              className="card cascading-right"
-              style={{
-                background: "hsla(0, 0%, 100%, 0.55)",
-                backdropFilter: "blur(30px)",
-              }}
-            >
-              <div className="card-body p-5 shadow-5 text-center">
-                <h2 className="fw-bold mb-5 btngreen">Log In</h2>
+            <div className="card cascading-right">
+              <div className="card-body p-5 shadow-5 text-center ">
+                <h2 className="text-center d-flex justify-content-center">
+                  <div className="d-flex gap-2 align-items-center ">
+                    <span>
+                      <span>Welcome to Tasty</span>{" "}
+                      <span style={{ color: "#198754" }}>Bite</span>
+                    </span>
+                    <img
+                      className="mb-4 mb-sm-0"
+                      src={"../images/chef.svg"}
+                      alt="logo"
+                      style={{
+                        color: "#1c1c1c",
+                        width: "70px",
+                      }}
+                    />
+                  </div>
+                </h2>
+                <h2 className="fw-bold mb-5 btngreen">Login now</h2>
                 <form onSubmit={handleclick}>
-                  <div className="form-outline mb-4">
+                  <div className="form-outline mb-4 text-start">
+                    <label className="form-label" htmlFor="form3Example3">
+                      Email address :
+                    </label>
                     <input
                       type="email"
                       id="form3Example3"
@@ -88,65 +89,59 @@ const Login = () => {
                       name="email"
                       placeholder="Email address"
                       onChange={handlechange}
+                      value={user.email}
                     />
-                    <label
-                      className="form-label"
-                      htmlFor="form3Example3"
-                    ></label>
                   </div>
-
-                  <div className="form-outline mb-4">
+                  <div className="form-outline mb-4 text-start position-relative">
+                    <label className="form-label" htmlFor="form3Example4">
+                      Password :
+                    </label>
                     <input
-                      type="password"
+                      type={showPassword ? "text" : "password"}
                       id="form3Example4"
                       className="form-control"
                       name="password"
                       placeholder="Password"
                       onChange={handlechange}
+                      value={user.password}
                     />
-                    <label
-                      className="form-label"
-                      htmlFor="form3Example4"
-                    ></label>
+                    <button
+                      className="password-icon position-absolute"
+                      style={{ top: "42px", right: "30px" }}
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
                   </div>
-
+                  {submitError && <p style={{ color: "red" }}>{submitError}</p>}
                   <button
                     type="submit"
                     className="btn btn-success btn-block mb-4"
                   >
                     Log In
                   </button>
-{/* 
-                  <div className="text-center">
-                    <p>or sign up with:</p>
-                    <div>
-                      <div>
-                        {/* <button
-                          type="button"
-                          className=" btn btn-link btn-floating mx-1 "
-                        >
-                          <Socailf />
-                        </button> */}
-
-                        {/* <Google /> */}
-
-                        {/* <button
-                          type="button"
-                          className="  btn btn-link btn-floating mx-1 "
-                          style={{ height: "3.5rem" }}
-                        >
-                          <SocialG />
-                        </button> */}
-                      {/* </div>
-                    </div> */}
-                  {/* </div> */} 
+                  <div>
+                    Don't have account?
+                    <Link
+                      className="mx-1"
+                      to={"/signin"}
+                      style={{ textDecoration: "underline", color: "blue" }}
+                    >
+                      Register now
+                    </Link>
+                  </div>{" "}
                 </form>
               </div>
             </div>
           </div>
 
-          <div className="d-none d-lg-block col-lg-6 mb-5 mb-lg-0">
-            <img src="images/3.jpg" style={{ width: "100%" }} alt="login-photo" />
+          <div className="d-none mx-5 d-lg-block col-lg-5 mb-5 mb-lg-0 ">
+            <img
+              src="images/3.jpg"
+              style={{ width: "100%", height: "40rem" }}
+              alt="login-photo"
+            />
           </div>
         </div>
       </div>
