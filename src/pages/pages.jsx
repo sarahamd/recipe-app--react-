@@ -16,6 +16,7 @@ import CartPage from "./CartPage";
 import Premiumpage from "./premiumpage";
 import FavPage from "./favPage";
 import Login from "./Login";
+import Detailscusine from "./detailscusine";
 
 const Pages = () => {
 
@@ -37,6 +38,7 @@ const Pages = () => {
                         <Route path="/category/:categories" element={<Category />}></Route>
                         {/* <Route path="/category/:category" element={<Cat />}></Route> */}
                         <Route path="/details/:id" element={<Details />}></Route>
+                        <Route path="/Detailscusine/:id" element={<Detailscusine />}></Route>
                         <Route path="/cart" element={<CartPage />}></Route>
                         <Route path="/premium" element={<Premiumpage />}></Route>
                         <Route path="/fav" element={<FavPage />}></Route>

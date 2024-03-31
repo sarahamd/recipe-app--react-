@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import YouTube from "react-youtube";
@@ -5,40 +6,41 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import axios from "axios";
 
-const Details = () => {
-  const state = useSelector((st) => st.getrecpie.getrecpie);
-  const [recipe, setRecipe] = useState([]);
-  console.log(state);
 
-  const [showFullText, setShowFullText] = useState(false);
-  const toggleFullText = () => {
-    setShowFullText(!showFullText);
-  };
-
-  const [isChecked, setIsChecked] = useState({});
-
-  const handleCheckboxChange = (key) => (event) => {
-    setIsChecked((prev) => ({
-      ...prev,
-      [key]: event.target.checked,
-    }));
-  };
-
-  useEffect(() => {
-    
-        axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state[0].idMeal}`)
-        .then((response) => {
-          console.log("response.data.meals",response.data.meals);
-          setRecipe(response.data.meals)
-        })
-        .catch((err) => {
-          console.log(err)
-        }) 
+const Detailscusine = () => {
+    const state = useSelector((st) => st.getrecpie.getrecpie);
+    const [recipe, setRecipe] = useState([]);
+    console.log(state);
+  
+    const [showFullText, setShowFullText] = useState(false);
+    const toggleFullText = () => {
+      setShowFullText(!showFullText);
+    };
+  
+    const [isChecked, setIsChecked] = useState({});
+  
+    const handleCheckboxChange = (key) => (event) => {
+      setIsChecked((prev) => ({
+        ...prev,
+        [key]: event.target.checked,
+      }));
+    };
+  
+    useEffect(() => {
       
-  }, [state]);
-
-  return (
-    <div>
+          axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${state.idMeal}`)
+          .then((response) => {
+            console.log("response.data.meals",response.data.meals);
+            setRecipe(response.data.meals)
+          })
+          .catch((err) => {
+            console.log(err)
+          }) 
+        
+    }, [state]);
+    return (
+        <div>
+           <div>
       <Navbar />
       {recipe && recipe.map((u, index) => (
         <div key={index} className="container mt-5 " style={{overflowX:"hidden"}}>
@@ -95,8 +97,10 @@ const Details = () => {
         </div>
       ))}
       <Footer />
-    </div>
-  );
-};
+    </div>  
+        </div>
+    );
+}
 
-export default Details;
+export default Detailscusine;
+

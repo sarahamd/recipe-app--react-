@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const getrecpieSlice = createSlice({
     name:'getrecpie',
-    initialState:{getrecpie:[]},
+    initialState:{getrecpie:null},
         reducers:{
             getrecpie:(state,action)=>{
                 state.getrecpie = action.payload

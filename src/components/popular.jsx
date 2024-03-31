@@ -39,8 +39,7 @@ const Popular = () => {
 
   function handleClick(meal) {
     console.log(meal);
-    // console.log("2");
-    dispatch(getrecpie(meal));
+   console.log(dispatch(getrecpie(meal))); 
     navigate(`/Details/${meal[0].idMeal}`);
   }
 

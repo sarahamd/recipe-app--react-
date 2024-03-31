@@ -34,7 +34,7 @@ const SearchResult = ({ filteredData }) => {
   const handleClick = (data, e) => {
     e.preventDefault();
         dispatch(getrecpie(data));
-    navigate(`/details/${data.idMeal}`);
+    navigate(`/Detailscusine/${data.idMeal}`);
   };
 
   const handleFavourite = (data,e) => {
