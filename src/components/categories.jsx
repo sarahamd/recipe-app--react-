@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
   const API_CATEGORIES_LIST_URL =
     'https://www.themealdb.com/api/json/v1/1/categories.php';
-
+    const [t, i18n] = useTranslation();
   async function getCategories() {
     const check = localStorage.getItem('Categories_List');
 
@@ -25,27 +26,27 @@ const Categories = () => {
     getCategories();
   }, []);
 
-  const displayedCategories = categories.slice(0, 12);
+  const displayedCategories = categories.slice(0, 10);
 
   console.log("Categories component rendered");
   console.log(displayedCategories);
   
   return (
-    <div className="mb-2" style={{ marginTop: '5em' }}>
+    <div className="mb-2" style={{ marginTop: '5em' }} dir={`${i18n.language}`==='en'?"ltr":"rtl"}>
       <div className="container-fluid">
         <div className="row g-5 mx-auto">
           <div className="d-flex justify-content-between">
-            <h2 style={{ fontWeight: '700', fontSize: "3rem" }}>Categories</h2>
+            <h2 style={{ fontWeight: '700', fontSize: "3rem" }}>{t('Categories')}</h2>
             <button className="btn">
               <Link to="/category" className="text-success text-decoration-none fw-bold">
-                View more
-              </Link>
+              {t('View more')}         
+                   </Link>
             </button>
           </div>
           <Container>
             {displayedCategories?.map((category) => (
               <Card key={category.idCategory}>
-                <Link className="nav-link" to="/category">
+                <Link className="nav-link" to={`/category/${category.strCategory}`}>
                   <Category>
                     <CategoryImage
                       src={category.strCategoryThumb}

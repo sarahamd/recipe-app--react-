@@ -42,10 +42,10 @@ console.log(err)
 
   return (
   
-    <div> 
+    <div > 
       <Navbar></Navbar> 
       {recipe && recipe.map((u, index) => (
-        <div key={index} className="p-3 m-5 ">
+        <div key={index} className="p-3 m-5 " style={{overflowX:"hidden"}}>
           <div className="container">
             <div className="row">
               <div className="col-12">

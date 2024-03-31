@@ -1,44 +1,55 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Search from '../components/Search';
-import CategoryList from '../components/CategoryList';
+import Search from '../components/Cuisine&Categories/Search';
+import CategoryList from '../components/Cuisine&Categories/CategoryList';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useParams } from 'react-router-dom';
 
 const Category = () => {
   const [category, setCategory] = useState([]);
+  const [currCategory, setCurrCategory] = useState(null);
   const categoriesArr = JSON.parse(localStorage.getItem('Categories_List')).map(
     (category) => {
       return category.strCategory;
     }
   );
-  //   console.log(categoriesArr)
 
-    async function getCategoriesData(category) {
-        const check = localStorage.getItem(category);
-        if (check) {
-            setCategory(pre => [...pre, ...JSON.parse(check)]);
-        } else {
-            const { data: { meals } } = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
-            // console.log(meals)
-            setCategory(pre => [...pre, ...meals]);
-            localStorage.setItem(category, JSON.stringify(meals));
-        }
+  const { categories } = useParams();
+
+  async function getCategoriesData(category) {
+    const check = localStorage.getItem(category);
+    if (check) {
+      setCategory((pre) => [...pre, ...JSON.parse(check)]);
+    } else {
+      const {
+        data: { meals },
+      } = await axios.get(
+        `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+      );
+
+      setCategory((pre) => [...pre, ...meals]);
+      localStorage.setItem(category, JSON.stringify(meals));
     }
+  }
 
-  function getCategories() {
-    categoriesArr.map((country) => {
-      return getCategoriesData(country);
-    });
+  function getAllCategories() {
+    setCurrCategory(null);
+    setCategory([]);
+    if (categories) {
+      return getCategoriesData(categories);
+    } else {
+      categoriesArr.map((cat) => {
+        return getCategoriesData(cat);
+      });
+    }
   }
 
   useEffect(() => {
-    getCategories();
-  }, []);
-
-  console.log('Cuisine component rendered');
-  console.log(category);
+    setCurrCategory(categories);
+    getAllCategories();
+  }, [categories, currCategory]);
 
   return (
     <>
@@ -47,7 +58,7 @@ const Category = () => {
         <div className="row">
           <div className="col-12">
             <div className="banner Catbanner rounded-4 overflow-hidden d-flex align-items-center justify-content-center">
-              <h1>Categories</h1>
+              <h1>{currCategory || 'Categories'}</h1>
             </div>
           </div>
         </div>

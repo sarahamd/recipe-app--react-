@@ -5,6 +5,8 @@ import { MdCloudUpload } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Upload = styled.label`
   display: flex;
@@ -118,9 +120,10 @@ const AddRecipe = () => {
   }, [])
 
   return (
-    <div className='m-4'>
+    <><Navbar>
+      </Navbar><div className='m-4'>
       <div className='container w-75 m-auto'>
-        <hr />
+
         <div className="text-success"></div>
         <div><h2 className="text-success">Create New Recipe</h2></div>
         <hr />
@@ -135,16 +138,14 @@ const AddRecipe = () => {
             className='form-control mb-3'
             value={recipe.title}
             required
-            onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
-          />
+            onChange={(e) => setRecipe({ ...recipe, title: e.target.value })} />
           <label htmlFor='image' className=' m-2 fs-6 '>Recipe Image:</label>
           <Upload className="mb-3 col-8">
             {recipe.RecipeImage ? (
               <img
                 src={URL.createObjectURL(recipe.RecipeImage)}
                 style={{ width: '100%', height: '100%' }}
-                alt="Selected"
-              />
+                alt="Selected" />
             ) : (
               <>
                 <MdCloudUpload color="#1475cf" size={60}></MdCloudUpload>
@@ -158,8 +159,7 @@ const AddRecipe = () => {
               name="RecipeImage"
               onChange={handleImage}
               ref={fileInputRef}
-              required
-            />
+              required />
           </Upload>
           <label htmlFor='Description' className=' m-2 fs-6'>Description:</label>
           <textarea
@@ -181,10 +181,9 @@ const AddRecipe = () => {
                 className='form-control mb-2'
                 value={recipe.ingredients[index] || ''}
                 placeholder={`Ingredient #${index + 1}`}
-                onChange={(e) => handleChange(e, index, 'ingredients')}
-              />
+                onChange={(e) => handleChange(e, index, 'ingredients')} />
             ))}
-            <br />
+          <br />
           <span className="bi bi-plus-circle fs-3 m-2 text-success" onClick={() => handleAddField('ingredients')}></span>
           <br />
           <label className='fs-6 m-2'>Instructions:</label>
@@ -197,10 +196,9 @@ const AddRecipe = () => {
                 className='form-control mb-2'
                 value={recipe.instructions[index] || ''}
                 placeholder={`Instruction #${index + 1}`}
-                onChange={(e) => handleChange(e, index, 'instructions')}
-              />
+                onChange={(e) => handleChange(e, index, 'instructions')} />
             ))}
-            <br />
+          <br />
           <span className="bi bi-plus-circle fs-3 m-2 text-success" onClick={() => handleAddField('instructions')}></span>
           <br />
 
@@ -216,8 +214,7 @@ const AddRecipe = () => {
             className='form-control mb-3'
             value={recipe.Servings}
             onChange={(e) => setRecipe({ ...recipe, Servings: e.target.value })}
-            required
-          />
+            required />
 
           <label className="m-2 form-label">
             Preparation Time:
@@ -230,8 +227,7 @@ const AddRecipe = () => {
               value={recipe.PrepTimeHours}
               onChange={(e) => setRecipe({ ...recipe, PrepTimeHours: e.target.value })}
               required
-              placeholder='Hours'
-            />
+              placeholder='Hours' />
             <input
               type="number"
               className="form-control m-1 mb-2"
@@ -239,8 +235,7 @@ const AddRecipe = () => {
               value={recipe.PrepTimeMins}
               onChange={(e) => setRecipe({ ...recipe, PrepTimeMins: e.target.value })}
               required
-              placeholder='Minutes'
-            />
+              placeholder='Minutes' />
           </div>
 
           <label htmlFor="CookingTime" className="m-2 form-label">
@@ -254,8 +249,7 @@ const AddRecipe = () => {
               value={recipe.CookingTimeHours}
               onChange={(e) => setRecipe({ ...recipe, CookingTimeHours: e.target.value })}
               required
-              placeholder='Hours'
-            />
+              placeholder='Hours' />
             <input
               type="number"
               className="form-control m-1 mb-2"
@@ -263,8 +257,7 @@ const AddRecipe = () => {
               value={recipe.CookingTimeMins}
               onChange={(e) => setRecipe({ ...recipe, CookingTimeMins: e.target.value })}
               required
-              placeholder='Minutes'
-            />
+              placeholder='Minutes' />
           </div>
 
           <label htmlFor='Cuisine' className=' m-2 fs-6 '>Cuisine:</label>
@@ -292,6 +285,8 @@ const AddRecipe = () => {
         </form>
       </div>
     </div>
+    <Footer></Footer>
+    </>
   );
 }
 

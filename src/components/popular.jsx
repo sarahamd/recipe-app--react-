@@ -15,7 +15,7 @@ const Popular = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const API_RANDOM_URL = 'https://www.themealdb.com/api/json/v1/1/random.php';
-  const [t] = useTranslation();
+  const [t,i18n] = useTranslation();
 
   async function getPopular() {
     const check = localStorage.getItem('popular');
@@ -52,7 +52,7 @@ const Popular = () => {
     <>
       <div id="categories" className="mb-3" style={{ marginTop: '5em' }} >
         <div className="container-fluid mb-4">
-          <div className="row">
+          <div className="row" dir={`${i18n.language}`==='en'?"ltr":"rtl"}>
             <h2 style={{ fontWeight: '600', fontSize: "3rem"}}>{t('Popular Picks')}</h2>
           </div>
         </div>

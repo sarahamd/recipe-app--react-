@@ -13,8 +13,8 @@ export default function Landing() {
         <div className="row align-items-center">
           <div className="col-md-6">
             <h1
-              className="fw-bold text-start"
-              style={{ fontFamily: 'Poppins,sans-serif' }}
+             className={`${i18n.language === 'en' ? 'text-start' : 'text-end'} fw-bold`}
+             style={{ fontFamily: 'Poppins,sans-serif' }}
             >
               {t('Daily Bites, Endless Delights: Join Our Food Journey')}
               <span className="text-success"> {t('Food')}</span>  {t('Journey')}

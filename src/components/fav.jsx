@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { v4 as uuid } from "uuid";
 import RecentJunior from "./recentJunior";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Fav = () => {
   let logedInUser = useSelector((state) => state.logedInUser.logedInUser);
@@ -25,6 +27,7 @@ const Fav = () => {
   console.log(favRecipies);
   return (
     <>
+    <Navbar></Navbar>
       <div style={{ marginBlock: "5em" }}>
         <div className="container-fluid">
           <div className="row g-5 mx-auto">
@@ -36,6 +39,7 @@ const Fav = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

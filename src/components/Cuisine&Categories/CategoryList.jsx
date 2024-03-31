@@ -28,7 +28,7 @@ const CategoryList = ({ categoriesArr }) => {
       <div id="countryList">
         {categoriesArr.map((cat) => {
           return (
-            <NavLink className="listCountry" to={`/categories/${cat}`}>
+            <NavLink className="listCountry" to={`/category/${cat}`}>
               <h4
                 className={currCategory === cat ? 'text-success' : 'text-dark'}
               >

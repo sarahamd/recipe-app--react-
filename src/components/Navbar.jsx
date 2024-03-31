@@ -22,9 +22,8 @@ export default function Navbar() {
   console.log(t);
 
   
-  const handleLanguageChange = (language) => {
-    console.log(language);
-    console.log(currentLanguage)
+  const handleLanguageChange = (event) => {
+    const language = event.target.value;
     dispatch(changeLanguage(language));
     i18n.changeLanguage(language);
   };
@@ -108,7 +107,8 @@ export default function Navbar() {
               </li>
               <li className="nav-item px-1">
                 <Link className="nav-link" to="/category">
-                  Categories
+                {t('Categories')}
+                  
                 </Link>
               </li>
               <li className="nav-item px-1">
@@ -123,43 +123,35 @@ export default function Navbar() {
               </li>
               <li className="nav-item px-1">
                 <Link className="nav-link" to="/premium">
-                  Premium Recipe
+                {t('Premium Recipe')}
                 </Link>
               </li>
             </ul>
           </div>
           <div className="d-flex align-items-center ms-auto">
-            {initials === "Guest" ? <p style={{ margin: "1rem", color: "black", fontSize: "1.2rem" }}>Please sign in</p> : <p style={{ margin: "1rem", color: "black", fontSize: "1.2rem" }}>Welcome</p>}
             <div
               className="User d-flex align-items-center justify-content-center"
               style={{
-                width: "4rem",
-                height: "4rem",
-                border: "4px solid #198754",
+                width: "3rem",
+                height: "3rem",
+                border: "3px solid #198754",
                 borderRadius: "50%",
                 color: "black",
                 marginRight: "10px",
               }}
             >
-              <p style={{ margin: "0", color: "black", fontSize: "1.2rem", fontWeight: "600" }}>{initials}</p>
+              <p style={{ margin: "0", color: "black", fontSize: "0.9rem", fontWeight: "600" }}>{initials}</p>
             </div>
 
-          <div>
-            <button
-              className="btn btn-outline-success"
-              onClick={() => handleLanguageChange('en')}
-            >
-              En
-            </button>{' '}
-            &nbsp;
-            <button
-              className="btn btn-outline-success"
-              onClick={() => handleLanguageChange('ar')}
-            >
-              Ar
-            </button>{' '}
-            &nbsp;
-          </div>
+            <div>
+              <select
+                className="btn btn-light me-3"
+                onChange={handleLanguageChange}
+              >
+                <option value="en">En</option>
+                <option value="ar">Ar</option>
+              </select>
+            </div>
 
             <div className="signUp d-none d-lg-block d-xl-block d-xxl-block">
               {!logedInUser && (

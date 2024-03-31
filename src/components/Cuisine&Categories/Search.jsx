@@ -18,8 +18,6 @@ export default function Search({ allData }) {
   const getAllData = async () => {
     setData(allData);
     setFilteredRecipes(allData);
-
-    console.log(data);
   };
 
   useEffect(() => {
@@ -37,8 +35,6 @@ export default function Search({ allData }) {
     setFilteredRecipes(searchResult);
   }
 
-  console.log('Search component rendered');
-  console.log(allData);
 
   return (
     

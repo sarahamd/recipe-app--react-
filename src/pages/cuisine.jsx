@@ -1,14 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Search from '../components/Search';
-import CountryList from '../components/countryList';
+import Search from '../components/Cuisine&Categories/Search';
+import CountryList from '../components/Cuisine&Categories/countryList';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { useParams } from 'react-router-dom';
 
 const Cuisine = () => {
   const [cuisine, setCuisine] = useState([]);
+  const [currCountry, setCurrCountry] = useState(null);
   const countriesArr = ['Egyptian', 'American', 'Italian', 'Thai', 'Japanese'];
+
+  const { country } = useParams();
 
   async function getCountryData(country) {
     const check = localStorage.getItem(country);
@@ -20,24 +24,31 @@ const Cuisine = () => {
       } = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`
       );
-      // console.log(meals)
       setCuisine((pre) => [...pre, ...meals]);
       localStorage.setItem(country, JSON.stringify(meals));
     }
   }
 
-  function getCuisine() {
-    countriesArr.map((country) => {
+  function getAllCuisine() {
+    setCurrCountry(null);
+    setCuisine([]);
+    if (country) {
       return getCountryData(country);
-    });
+    } else {
+      countriesArr.map((country) => {
+        return getCountryData(country);
+      });
+    }
   }
 
   useEffect(() => {
-    getCuisine();
-  }, []);
+    setCurrCountry(country);
+    getAllCuisine();
+  }, [country, currCountry]);
 
-  console.log('Cuisine component rendered');
-  console.log(cuisine);
+  const backgroundImageUrl = currCountry
+    ? `/images/${currCountry}.jpg`
+    : '/images/9.jpg';
 
   return (
     <>
@@ -45,8 +56,14 @@ const Cuisine = () => {
       <div className="container-fluid cuisine" style={{ padding: '2rem' }}>
         <div className="row">
           <div className="col-12">
-            <div className="banner Countrybanner rounded-4 overflow-hidden d-flex align-items-center justify-content-center">
-              <h1>Recipes</h1>
+            <div
+              style={{
+                background: `url(${backgroundImageUrl}) no-repeat`,
+                backgroundPosition: 'center',
+              }}
+              className="banner rounded-4 overflow-hidden d-flex align-items-center justify-content-center"
+            >
+              <h1>{currCountry || 'Recipes'}</h1>
             </div>
           </div>
         </div>

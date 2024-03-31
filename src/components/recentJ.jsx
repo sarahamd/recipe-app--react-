@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import RecentJunior from "./recentJunior";
 import { v4 as uuid } from "uuid";
+import { useTranslation } from 'react-i18next';
 
 const RecentJ = () => {
   const [recent, setRecent] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const API_RANDOM_URL = "https://www.themealdb.com/api/json/v1/1/random.php";
+  const [t,i18n] = useTranslation();
 
   async function getRecent() {
     const check = localStorage.getItem("recent");
@@ -43,7 +45,7 @@ const RecentJ = () => {
       <div style={{ marginBlock: "5em" }}>
         <div className="container-fluid">
           <div className="row g-5 mx-auto">
-            <h2 style={{ fontWeight: "600" }}>Explore Recipes</h2>
+          <h2 style={{ fontWeight: '600' }} dir={`${i18n.language}`==='en'?"ltr":"rtl"}> {t('Recent recipes')}</h2>
             {recent?.map((data, index) => {
               const meal = data.meals ? data.meals[0] : null;
               if (!meal) return null;

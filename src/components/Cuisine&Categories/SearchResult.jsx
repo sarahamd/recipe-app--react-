@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { getrecpie } from '../redux/slice/Getdetails';
-import { setLogedInUser } from "../redux/slice/logedInUser";
+import { getrecpie } from '../../redux/slice/Getdetails';
+import { setLogedInUser } from "../../redux/slice/logedInUser";
 import axios from "axios";
 
 const SearchResult = ({ filteredData }) => {
