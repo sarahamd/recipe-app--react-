@@ -1,3 +1,33 @@
+# Tasty Bite
+
+Tasty Bite is your passport to a world of culinary delights, offering a diverse range of recipes from various countries including Egypt, Japan, and more. 🌍🍽
+
+## Features
+
+- **Global Recipe Collection**: Explore a vast library of mouthwatering recipes, each showcasing the unique flavors and traditions of its country of origin.
+
+- **Personalization**: Customize your culinary journey by saving your favorite recipes for easy access whenever inspiration strikes.
+
+- **Recipe Purchase**: With integrated PayPal functionality, you can seamlessly purchase access to exclusive recipes that pique your interest.
+
+- **User-Friendly Interface**: Tasty Bite boasts a sleek and intuitive interface, ensuring a seamless browsing and cooking experience for users of all levels.
+
+## Technologies Used
+
+Our dedicated team utilized a range of technologies to bring Tasty Bite to fruition, including:
+
+- Bootstrap: Front-end framework for responsive design.
+- EmailJS: Service for sending emails directly from client-side JavaScript.
+- React: JavaScript library for building user interfaces.
+- JSON Server: Fake REST API for backend development and prototyping.
+- PayPal Integration: Payment processing for recipe purchases.
+
+## Getting Started
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository_url>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
